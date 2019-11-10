@@ -1,6 +1,15 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Controllers\Controller;
+
+use App\Verification;
+
+use App\User;
+
+
+use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,5 +37,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/twitts/all', 'TwitterController@index')->middleware('cors');
-
 Route::post('/twitts', 'TwitterController@post')->middleware('cors');
+//-------------------------------------------------------------------------------------//
+Route::post('/book', 'BookController@index')->middleware('cors');
+Route::post('/bookall', 'BookController@getfunc')->middleware('cors');
+Route::post('/register', 'Auth\AuthController@register')->middleware('cors');
+Route::post('/login', 'Auth\AuthController@login')->middleware('cors');
